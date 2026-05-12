@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="main.css" />
-    <title>Publications | Wonwoo Kang</title>
+    <link rel="stylesheet" href="./main.css" />
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <title>Publications</title>
     <style>
-        .text-justify { text-align: justify; }
+        .text-justify {
+            text-align: justify;
+        }
     </style>
 </head>
 <body>
@@ -15,10 +18,8 @@
         <span>Wonwoo Kang | Research</span>
         <nav class="menu-container">
             <div class="menu">
-                <a href="index.html" class="link">Overview</a>
-                <a href="research.html" class="link active">Publications</a>
-                <a href="staff.html" class="link">Staff</a>
-                <a href="contacts.html" class="link">Contacts</a>
+                <a href="./index.html" class="link">Overview</a>
+                <a class="link active">Publications</a>
             </div>
         </nav>
     </header>
@@ -26,6 +27,7 @@
     <main class="main">
         <h1 class="title">Publications</h1>
         <ul class="publications-list">
+
             <!-- Paper 1 -->
             <li class="publications-list__item">
                 <p class="publications-list__item-text">
@@ -35,9 +37,12 @@
                 <div class="publications-list__item-more">
                     <a href="https://arxiv.org/abs/2508.04396" class="link" target="_blank">arXiv</a>
                     <a href="https://doi.org/10.1016/j.ejc.2026.104392" class="link" target="_blank">Journal</a>
-                    <div class="more-tab">Abstract
+                    <div class="more-tab">
+                        Abstract
                         <div class="more-tab__popup">
-                            <p class="text-justify">We prove that the rank polynomial of the lattice of order ideals of a loop fence poset is unimodal. This poset arises as the poset of join-irreducibles in the lattice of good matchings of loop graphs associated with notched arcs...</p>
+                            <p class="text-justify">
+                                We prove that the rank polynomial of the lattice of order ideals of a loop fence poset is unimodal. This poset arises as the poset of join-irreducibles in the lattice of good matchings of loop graphs associated with notched arcs. Equivalently, such polynomials can be obtained by evaluating all coefficient variables in an F-polynomial at a single variable q. We also conclude that the rank polynomial of any tagged arc, whether plain or notched, is not only unimodal but also satisfies a symmetry condition known as almost interlacing. Furthermore, when the lamination consists of a single curve, the cluster expansion-evaluated by setting all cluster variables to 1 and all coefficient variables to q-is also unimodal. We conjecture that polynomials in this case are log-concave.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -46,13 +51,17 @@
             <!-- Paper 2 -->
             <li class="publications-list__item">
                 <p class="publications-list__item-text">
-                    E. Banaian, E. Kelley, and <b>Wonwoo Kang</b>. Skein relations for punctured surfaces. <i>Preprint</i>, 2024.
+                    E. Banaian, E. Kelley, and <b>Wonwoo Kang</b>. Skein relations for punctured surfaces. 
+                    <i>Preprint</i>, arXiv: 2409.04957, 2024.
                 </p>
                 <div class="publications-list__item-more">
                     <a href="https://arxiv.org/abs/2409.04957" class="link" target="_blank">arXiv</a>
-                    <div class="more-tab">Abstract
+                    <div class="more-tab">
+                        Abstract
                         <div class="more-tab__popup">
-                            <p class="text-justify">We investigate skein relations in cluster algebras from punctured surfaces, extending the work of Çanakçi-Schiffler and Musiker-Williams on unpunctured surfaces...</p>
+                            <p class="text-justify">
+                                We investigate skein relations in cluster algebras from punctured surfaces, extending the work of Çanakçi-Schiffler and Musiker-Williams on unpunctured surfaces. Using a combinatorial expansion formula by Oğuz-Yıldırım and Pilaud-Reading-Schroll, we provide explicit formulas for these relations. This work demonstrates that the punctured analogues of the bangle and bracelet functions form spanning sets for cluster algebras associated with a punctured surfaces. For surfaces with boundary and closed surfaces of genus 0, we further show that the bangles and bracelets form bases.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -61,20 +70,36 @@
             <!-- Paper 3 -->
             <li class="publications-list__item">
                 <p class="publications-list__item-text">
-                    E. Banaian, E. Kelley, <b>Wonwoo Kang</b>, E. Oğuz, and E. Yıldırım. Cluster Expansions from Punctured Orbifolds. <i>Preprint</i>, 2026.
+                    E. Banaian, E. Kelley, <b>Wonwoo Kang</b>, E. Oğuz, and E. Yıldırım. Cluster Expansions from Punctured Orbifolds. 
+                    <i>Preprint</i>, arXiv: 2605.04982, 2026.
                 </p>
                 <div class="publications-list__item-more">
                     <a href="https://arxiv.org/abs/2605.04982" class="link" target="_blank">arXiv</a>
-                    <div class="more-tab">Abstract
+                    <div class="more-tab">
+                        Abstract
                         <div class="more-tab__popup">
-                            <p class="text-justify">We provide multiple combinatorial expansion formulas - in terms of snake graphs, labelled posets, matrices, and T-walks - for elements in generalized cluster algebras associated to arcs on punctured orbifolds...</p>
+                            <p class="text-justify">
+                                We provide multiple combinatorial expansion formulas - in terms of snake graphs, labelled posets, matrices, and T-walks - for elements in generalized cluster algebras associated to arcs on punctured orbifolds and illustrate their equivalence. This work generalizes and unifies existing work on combinatorial expansion formulas from surfaces and unpunctured orbifolds.
+                            </p>
                         </div>
                     </div>
                 </div>
             </li>
+
         </ul>
     </main>
 
+    <div id="overlay"></div>
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            jax: ["input/TeX", "output/CommonHTML"],
+            extensions: ["tex2jax.js"],
+            TeX: {
+                extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"]
+            }
+        });
+    </script>
     <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
