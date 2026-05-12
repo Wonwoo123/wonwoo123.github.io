@@ -168,6 +168,14 @@ p[id^="paper"] {
     font-weight: 400;
 }
 
+.proceeding-link {
+    display: block;
+    font-size: 0.88rem;
+    color: #555;
+    margin-top: 4px;
+    font-style: normal;
+}
+
 /* --- Teaching Page Styles (Cards & Rows) --- */
 .home-card {
     background-color: #ffffff;
