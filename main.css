@@ -112,6 +112,29 @@ ol[reversed] li span {
     display: inline;
 }
 
+/* --- Research Page Button Fix --- */
+
+/* Targets the specific toggle buttons in research list items */
+ol[reversed] li a img, 
+img.toggle-btn {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    max-width: 20px !important;
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-left: 10px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+}
+
+/* Ensure the links containing buttons don't add weird spacing */
+ol[reversed] li a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
 /* Abstract Box Inside List Items */
 p[id^="paper"] {
     background-color: #f9f9f9;
