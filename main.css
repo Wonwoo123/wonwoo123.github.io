@@ -70,14 +70,15 @@ h1 {
     padding-bottom: 5px;
 }
 
-/* Publication Box/Card Styling */
 ol[reversed] {
-    list-style-position: inside;
-    padding-left: 0;
+    /* This ensures the numbers are visible and have space on the left */
+    padding-left: 30px; 
+    list-style-type: decimal;
 }
 
 ol[reversed] li {
-    display: block;
+    /* Changing this from 'block' to 'list-item' brings the numbers back */
+    display: list-item; 
     background-color: #ffffff;
     border: 1px solid #e1e4e8;
     border-radius: 8px;
@@ -85,7 +86,7 @@ ol[reversed] li {
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    font-weight: 700; /* Titles are bold */
+    font-weight: 700;
 }
 
 ol[reversed] li:hover {
