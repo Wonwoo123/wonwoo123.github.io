@@ -187,19 +187,25 @@ p[id^="paper"] {
 }
 
 /* Add space between course groups */
+/* 1. Reset all course-group margins to zero first */
 .course-group {
-    margin-top: 40px; /* Adjust this value to increase/decrease the gap */
+    margin-top: 0 !important;
 }
 
-/* Ensure the first group in a card stays close to the header */
-.course-group:first-of-type {
-    margin-top: 15px;
+/* 2. Add the big gap ONLY between two groups */
+.course-group + .course-group {
+    margin-top: 40px !important; 
 }
 
-/* Ensure headings inside the group don't add their own extra top space */
+/* 3. Tighten the space between the header and the first group */
+.card-header + .course-group {
+    margin-top: 10px !important;
+}
+
+/* 4. Final safety check on the h4 headers */
 .course-group h4 {
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
 }
 
 .semester {
