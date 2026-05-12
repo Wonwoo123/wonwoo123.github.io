@@ -1,44 +1,122 @@
-.more-tab__popup {
-    display: none;
-    position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 15px;
-    z-index: 100;
-    width: 400px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-    border-radius: 4px;
-    margin-top: 10px;
+/* General Page Styling */
+body {
+    font-family: 'Roboto Slab', serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fdfdfd;
 }
 
-/* This is the "Effect": It shows the popup when you hover over the tab */
-.more-tab:hover .more-tab__popup {
-    display: block;
+h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    color: #444;
 }
 
-/* Styling the "Abstract" button so it looks clickable */
-.more-tab {
-    display: inline-block;
-    cursor: pointer;
-    color: #007bff;
-    text-decoration: underline;
-    position: relative;
-    margin-right: 15px;
-    font-weight: bold;
+/* The Layout Wrapper */
+#wrapper {
+    display: flex;
+    gap: 40px;
 }
 
-/* Basic styling for the list items */
-.publications-list__item {
-    margin-bottom: 25px;
+/* Sidebar Navigation */
+#nav {
+    width: 150px;
+    flex-shrink: 0;
+}
+
+#nav ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
+    position: sticky;
+    top: 20px;
 }
 
-.publications-list__item-more {
-    margin-top: 10px;
+#nav li {
+    margin-bottom: 10px;
 }
 
-.link {
-    margin-right: 15px;
+#nav a {
     text-decoration: none;
-    color: #007bff;
+    color: #0066cc;
+    font-weight: 400;
+}
+
+#nav a:hover {
+    text-decoration: underline;
+}
+
+#nav li.current a {
+    font-weight: 700;
+    color: #000;
+    border-left: 3px solid #333;
+    padding-left: 10px;
+}
+
+/* Main Content Area */
+#main {
+    flex-grow: 1;
+}
+
+#maintext h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+/* Paper List Styling */
+ol[reversed] {
+    padding-left: 20px;
+}
+
+ol[reversed] li {
+    margin-bottom: 30px;
+    font-weight: 700; /* Titles are bold */
+}
+
+ol[reversed] li span {
+    font-weight: 400; /* Authors and info are normal weight */
+    display: block;
+    margin-top: 5px;
+}
+
+/* Abstract Toggle Styling */
+p[id^="paper"] {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    color: #555;
+    margin-top: 15px;
+    line-height: 1.5;
+}
+
+/* Button Image Styling */
+img {
+    vertical-align: middle;
+    cursor: pointer;
+    border: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    #wrapper {
+        flex-direction: column;
+    }
+    #nav {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+    }
+    #nav ul {
+        display: flex;
+        gap: 20px;
+    }
 }
