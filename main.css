@@ -219,6 +219,16 @@ p[id^="paper"] {
     gap: 8px;
 }
 
+/* Tighten the space inside the card header */
+.card-header h3 {
+    margin-bottom: 0 !important;
+    padding-bottom: 5px; /* Tiny bit of space just to breathe */
+}
+
+/* Ensure the header container itself doesn't add space */
+.card-header {
+    margin-bottom: 10px; /* Small gap before the first course-group starts */
+}
 /* Excellent Badge */
 .badge-excellent {
     font-size: 0.7rem;
@@ -301,6 +311,7 @@ p[id^="paper"] {
     margin-right: 10px;
     color: #333;
 }
+
 
 /* --- Utilities & Responsive --- */
 img.toggle-btn {
