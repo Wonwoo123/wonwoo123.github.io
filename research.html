@@ -1,105 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="./main.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,700" rel="stylesheet" type="text/css" />
-    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
-    <title>Publications</title>
-    <style>
-        .text-justify {
-            text-align: justify;
+    <title>Wonwoo Kang: Research</title>
+    <link href="./main.css" rel="stylesheet" type="text/css">
+    
+    <script type="text/javascript">
+    function toggleAbstract(abstractID) {
+        var CurrentAbstract = document.getElementById(abstractID);
+        var ViewArrow = document.getElementById(abstractID + "Viewarrow");
+        var HideArrow = document.getElementById(abstractID + "Hidearrow");
+
+        if (CurrentAbstract.style.display == 'none' || CurrentAbstract.style.display == '') {
+            CurrentAbstract.style.display = 'block';
+            ViewArrow.style.display = 'none';
+            HideArrow.style.display = 'inline';
+        } else {
+            CurrentAbstract.style.display = 'none';
+            ViewArrow.style.display = 'inline';
+            HideArrow.style.display = 'none';
         }
-    </style>
-</head>
-<body>
-    <header class="header">
-        <span>Wonwoo Kang | Research</span>
-        <nav class="menu-container">
-            <div class="menu">
-                <a href="./index.html" class="link">Overview</a>
-                <a class="link active">Publications</a>
-            </div>
-        </nav>
-    </header>
-
-    <main class="main">
-        <h1 class="title">Publications</h1>
-        <ul class="publications-list">
-
-            <!-- Paper 1 -->
-            <li class="publications-list__item">
-                <p class="publications-list__item-text">
-                    <b>Wonwoo Kang</b>, K. Lee and E. Lim. Unimodality and Cluster Algebras from Surfaces. 
-                    <i>European Journal of Combinatorics</i>, 136, 104392, 2026.
-                </p>
-                <div class="publications-list__item-more">
-                    <a href="https://arxiv.org/abs/2508.04396" class="link" target="_blank">arXiv</a>
-                    <a href="https://doi.org/10.1016/j.ejc.2026.104392" class="link" target="_blank">Journal</a>
-                    <div class="more-tab">
-                        Abstract
-                        <div class="more-tab__popup">
-                            <p class="text-justify">
-                                We prove that the rank polynomial of the lattice of order ideals of a loop fence poset is unimodal. This poset arises as the poset of join-irreducibles in the lattice of good matchings of loop graphs associated with notched arcs. Equivalently, such polynomials can be obtained by evaluating all coefficient variables in an F-polynomial at a single variable q. We also conclude that the rank polynomial of any tagged arc, whether plain or notched, is not only unimodal but also satisfies a symmetry condition known as almost interlacing. Furthermore, when the lamination consists of a single curve, the cluster expansion-evaluated by setting all cluster variables to 1 and all coefficient variables to q-is also unimodal. We conjecture that polynomials in this case are log-concave.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Paper 2 -->
-            <li class="publications-list__item">
-                <p class="publications-list__item-text">
-                    E. Banaian, E. Kelley, and <b>Wonwoo Kang</b>. Skein relations for punctured surfaces. 
-                    <i>Preprint</i>, arXiv: 2409.04957, 2024.
-                </p>
-                <div class="publications-list__item-more">
-                    <a href="https://arxiv.org/abs/2409.04957" class="link" target="_blank">arXiv</a>
-                    <div class="more-tab">
-                        Abstract
-                        <div class="more-tab__popup">
-                            <p class="text-justify">
-                                We investigate skein relations in cluster algebras from punctured surfaces, extending the work of Çanakçi-Schiffler and Musiker-Williams on unpunctured surfaces. Using a combinatorial expansion formula by Oğuz-Yıldırım and Pilaud-Reading-Schroll, we provide explicit formulas for these relations. This work demonstrates that the punctured analogues of the bangle and bracelet functions form spanning sets for cluster algebras associated with a punctured surfaces. For surfaces with boundary and closed surfaces of genus 0, we further show that the bangles and bracelets form bases.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Paper 3 -->
-            <li class="publications-list__item">
-                <p class="publications-list__item-text">
-                    E. Banaian, E. Kelley, <b>Wonwoo Kang</b>, E. Oğuz, and E. Yıldırım. Cluster Expansions from Punctured Orbifolds. 
-                    <i>Preprint</i>, arXiv: 2605.04982, 2026.
-                </p>
-                <div class="publications-list__item-more">
-                    <a href="https://arxiv.org/abs/2605.04982" class="link" target="_blank">arXiv</a>
-                    <div class="more-tab">
-                        Abstract
-                        <div class="more-tab__popup">
-                            <p class="text-justify">
-                                We provide multiple combinatorial expansion formulas - in terms of snake graphs, labelled posets, matrices, and T-walks - for elements in generalized cluster algebras associated to arcs on punctured orbifolds and illustrate their equivalence. This work generalizes and unifies existing work on combinatorial expansion formulas from surfaces and unpunctured orbifolds.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-
-        </ul>
-    </main>
-
-    <div id="overlay"></div>
-
-    <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            jax: ["input/TeX", "output/CommonHTML"],
-            extensions: ["tex2jax.js"],
-            TeX: {
-                extensions: ["AMSmath.js", "AMSsymbols.js", "autoload-all.js"]
-            }
-        });
+    }
     </script>
-    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <h1>&lt; &nbsp; Wonwoo Kang: Algebraic Combinatorics &nbsp; &gt;</h1>
+    
+    <div id="wrapper">
+        <div id="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="current"><a href="research.html">Research</a></li>
+            </ul>
+        </div>
+
+        <div id="main" class="papers">
+            <div id="maintext">
+                <h3>Writings: </h3> 
+                Click buttons <img src="./dot4.png" alt="button"> to reveal abstracts.
+                <br><br>
+
+                <ol reversed="">
+                    <!-- Paper 1 -->
+                    <li>
+                        Unimodality and Cluster Algebras from Surfaces
+                        <span>
+                            (with K. Lee and E. Lim)
+                            <a href="javascript:toggleAbstract('paper1')">
+                                <img src="./dot4.png" id="paper1Viewarrow" alt="Down Arrow" style="display: inline;">
+                                <img src="./dot3.png" id="paper1Hidearrow" alt="Up Arrow" style="display: none;">
+                            </a>
+                            <br>
+                            <i>European Journal of Combinatorics</i>, 136, 104392, 2026.
+                            <br>
+                            arXiv: <a href="https://arxiv.org/abs/2508.04396">2508.04396</a> | DOI: <a href="https://doi.org/10.1016/j.ejc.2026.104392">10.1016/j.ejc.2026.104392</a>
+                            
+                            <p id="paper1" style="display: none; margin-top: 10px; border-left: 2px solid #ccc; padding-left: 10px;">
+                                <b>Abstract:</b> We prove that the rank polynomial of the lattice of order ideals of a loop fence poset is unimodal. This poset arises as the poset of join-irreducibles in the lattice of good matchings of loop graphs associated with notched arcs. Equivalently, such polynomials can be obtained by evaluating all coefficient variables in an F-polynomial at a single variable q. We also conclude that the rank polynomial of any tagged arc, whether plain or notched, is not only unimodal but also satisfies a symmetry condition known as almost interlacing.
+                            </p>
+                        </span>
+                    </li>
+
+                    <!-- Paper 2 -->
+                    <li>
+                        Skein relations for punctured surfaces
+                        <span>
+                            (with E. Banaian and E. Kelley)
+                            <a href="javascript:toggleAbstract('paper2')">
+                                <img src="./dot4.png" id="paper2Viewarrow" alt="Down Arrow" style="display: inline;">
+                                <img src="./dot3.png" id="paper2Hidearrow" alt="Up Arrow" style="display: none;">
+                            </a>
+                            <br>
+                            Preprint, 2024.
+                            <br>
+                            arXiv: <a href="https://arxiv.org/abs/2409.04957">2409.04957</a>
+                            
+                            <p id="paper2" style="display: none; margin-top: 10px; border-left: 2px solid #ccc; padding-left: 10px;">
+                                <b>Abstract:</b> We investigate skein relations in cluster algebras from punctured surfaces, extending the work of Çanakçi-Schiffler and Musiker-Williams on unpunctured surfaces. Using a combinatorial expansion formula by Oğuz-Yıldırım and Pilaud-Reading-Schroll, we provide explicit formulas for these relations. This work demonstrates that the punctured analogues of the bangle and bracelet functions form spanning sets for cluster algebras associated with a punctured surfaces.
+                            </p>
+                        </span>
+                    </li>
+
+                    <!-- Paper 3 -->
+                    <li>
+                        Cluster Expansions from Punctured Orbifolds
+                        <span>
+                            (with E. Banaian, E. Kelley, E. Oğuz, and E. Yıldırım)
+                            <a href="javascript:toggleAbstract('paper3')">
+                                <img src="./dot4.png" id="paper3Viewarrow" alt="Down Arrow" style="display: inline;">
+                                <img src="./dot3.png" id="paper3Hidearrow" alt="Up Arrow" style="display: none;">
+                            </a>
+                            <br>
+                            Preprint, 2026.
+                            <br>
+                            arXiv: <a href="https://arxiv.org/abs/2605.04982">2605.04982</a>
+                            
+                            <p id="paper3" style="display: none; margin-top: 10px; border-left: 2px solid #ccc; padding-left: 10px;">
+                                <b>Abstract:</b> We provide multiple combinatorial expansion formulas - in terms of snake graphs, labelled posets, matrices, and T-walks - for elements in generalized cluster algebras associated to arcs on punctured orbifolds and illustrate their equivalence. This work generalizes and unifies existing work on combinatorial expansion formulas from surfaces and unpunctured orbifolds.
+                            </p>
+                        </span>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
