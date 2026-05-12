@@ -81,11 +81,10 @@ ol[reversed] li {
 }
 
 ol[reversed] li span {
-    font-weight: 400; /* Authors and info are normal weight */
-    display: block;
-    margin-top: 5px;
+    font-weight: 400; /* Keeps the names from being bold */
+    display: inline;  /* THIS FIXES THE LINE BREAK - changed from block to inline */
+    margin-left: 5px; /* Adds a tiny bit of space after the title */
 }
-
 /* Abstract Toggle Styling */
 p[id^="paper"] {
     background-color: #f9f9f9;
