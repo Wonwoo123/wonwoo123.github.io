@@ -243,24 +243,36 @@ img.toggle-btn {
     position: relative;
 }
 
+/* Update the popover to be more vivid */
 .merit-popover {
     visibility: hidden;
-    width: 250px;
+    width: 260px;
     background-color: #2d3436; /* Dark slate */
-    color: #fff;
-    padding: 12px;
+    color: #f1f2f6; /* Very light grey/white for the main text */
+    padding: 14px;
     border-radius: 8px;
     position: absolute;
-    bottom: 150%; /* Position above the word */
+    bottom: 150%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
     opacity: 0;
     transition: all 0.2s ease-in-out;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    pointer-events: none; /* Prevents popover from flickering */
+    font-size: 0.88rem;
+    line-height: 1.5;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    pointer-events: none;
+    border: 1px solid #444; /* Subtle border to define the shape */
+}
+
+/* This makes the "What is Merit?" title vivid and bright */
+.merit-popover strong {
+    color: #ffd700; /* Bright gold for high contrast */
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* The little arrow pointing down */
