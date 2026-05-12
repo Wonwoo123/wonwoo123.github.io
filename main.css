@@ -71,29 +71,32 @@ h1 {
 }
 
 ol[reversed] {
-    /* This ensures the numbers are visible and have space on the left */
-    padding-left: 30px; 
-    list-style-type: decimal;
+    /* Remove default padding since numbers will be inside the boxes */
+    padding-left: 0;
+    /* This tells the browser to put the number inside the element's box */
+    list-style-position: inside;
 }
 
 ol[reversed] li {
-    /* Changing this from 'block' to 'list-item' brings the numbers back */
-    display: list-item; 
+    display: list-item; /* This ensures the number is generated */
     background-color: #ffffff;
     border: 1px solid #e1e4e8;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 700;
+    
+    /* This adds a little extra space so the number isn't touching the edge */
+    padding-left: 25px; 
+}
+
+/* This styles the number itself inside the box */
+ol[reversed] li::marker {
+    color: #0066cc; /* Making the number blue to match your links */
     font-weight: 700;
 }
 
-/* This ensures the numbers stay outside the white box for a clean look */
-ol[reversed] li::marker {
-    font-weight: 700;
-    color: #444;
-}
 ol[reversed] li:hover {
     border-color: #0066cc;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
