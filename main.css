@@ -156,3 +156,21 @@ img.toggle-btn {
     display: inline-block;
     vertical-align: middle;
 }
+
+/* Styling for lists specifically inside teaching/home cards */
+.home-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.home-card ul li {
+    margin-bottom: 5px;
+    font-weight: 400; /* Keeps course names clean, not bold */
+}
+
+.home-card strong {
+    display: block;
+    margin-top: 10px;
+    color: #444;
+}
