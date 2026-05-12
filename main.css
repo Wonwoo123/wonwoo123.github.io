@@ -144,3 +144,11 @@ img {
         gap: 20px;
     }
 }
+/* The 'Hammer' Fix: Force the buttons to be small */
+img.toggle-btn {
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    display: inline-block;
+    vertical-align: middle;
+}
