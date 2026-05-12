@@ -89,7 +89,15 @@ h3 {
     margin-bottom: 15px;
     color: #444;
 }
+/* Remove top margin from the first element inside a card */
+.home-card > *:first-child {
+    margin-top: 0 !important;
+}
 
+/* Specifically target headers if they are still being stubborn */
+.home-card h3, .home-card h4 {
+    margin-top: 0;
+}
 /* --- Research Page Styles (Boxed Lists) --- */
 ol[reversed] {
     padding-left: 0;
