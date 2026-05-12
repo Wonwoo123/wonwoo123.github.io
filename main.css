@@ -194,12 +194,12 @@ p[id^="paper"] {
 
 /* 2. Add the big gap ONLY between two groups */
 .course-group + .course-group {
-    margin-top: 40px !important; 
+    margin-top: 30px !important; 
 }
 
 /* 3. Tighten the space between the header and the first group */
 .card-header + .course-group {
-    margin-top: 20px !important;
+    margin-top: 30px !important;
 }
 
 /* 4. Final safety check on the h4 headers */
