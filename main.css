@@ -115,13 +115,14 @@ ol[reversed] li span {
 /* --- Research Page Button Fix --- */
 
 /* Targets the specific toggle buttons in research list items */
-ol[reversed] li a img, 
-img.toggle-btn {
+/* --- Research Page Button Fix (Revised) --- */
+
+/* Target the images to lock their size only */
+ol[reversed] li a img {
     width: 20px !important;
     height: 20px !important;
     min-width: 20px !important;
     max-width: 20px !important;
-    display: inline-block !important;
     vertical-align: middle;
     margin-left: 10px;
     cursor: pointer;
@@ -129,11 +130,12 @@ img.toggle-btn {
     background: transparent;
 }
 
-/* Ensure the links containing buttons don't add weird spacing */
+/* Maintain the flex alignment for the row */
 ol[reversed] li a {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
+    vertical-align: middle;
 }
 /* Abstract Box Inside List Items */
 p[id^="paper"] {
