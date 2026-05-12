@@ -220,14 +220,24 @@ p[id^="paper"] {
 }
 
 /* Tighten the space inside the card header */
+/* Force the University title to have zero bottom margin */
 .card-header h3 {
     margin-bottom: 0 !important;
-    padding-bottom: 5px; /* Tiny bit of space just to breathe */
+    margin-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 1.2;
 }
 
-/* Ensure the header container itself doesn't add space */
+/* Force the header container to have a very small bottom margin */
 .card-header {
-    margin-bottom: 10px; /* Small gap before the first course-group starts */
+    margin-bottom: 5px !important;
+    padding-bottom: 0 !important;
+}
+
+/* Ensure the very first Course Group doesn't add its own top margin */
+.course-group:first-of-type h4 {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
 }
 /* Excellent Badge */
 .badge-excellent {
