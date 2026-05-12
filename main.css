@@ -157,7 +157,20 @@ img.toggle-btn {
     vertical-align: middle;
 }
 
+
+
 /* Styling for lists specifically inside teaching/home cards */
+
+/* Update this in your main.css */
+.home-card {
+    background-color: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 50px; /* Increased from 20px to 50px for more space */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
 .home-card ul {
     list-style-type: disc;
     padding-left: 20px;
