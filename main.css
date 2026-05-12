@@ -70,84 +70,63 @@ h1 {
     padding-bottom: 5px;
 }
 
-
-ol[reversed] li {
-    display: block;
-    background-color: #ffffff; /* White background for the box */
-    border: 1px solid #e1e4e8; /* Subtle light gray border */
-    border-radius: 8px;        /* Rounded corners */
-    padding: 20px;             /* Space inside the box */
-    margin-bottom: 20px;       /* Space between boxes */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Very light shadow for depth */
-    transition: transform 0.2s ease; /* Smooth effect if you want to add hover later */
-}
-
-/* Optional: Subtle highlight when you hover over a box */
-ol[reversed] li:hover {
-    border-color: #0066cc;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* Ensure the list number is inside or handled */
+/* Publication Box/Card Styling */
 ol[reversed] {
     list-style-position: inside;
     padding-left: 0;
 }
 
+ol[reversed] li {
+    display: block;
+    background-color: #ffffff;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 700; /* Titles are bold */
+}
+
+ol[reversed] li:hover {
+    border-color: #0066cc;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Paper details and names styling */
 ol[reversed] li span {
-    font-weight: 400; /* Keeps the names from being bold */
-    display: inline;  /* THIS FIXES THE LINE BREAK - changed from block to inline */
-    margin-left: 5px; /* Adds a tiny bit of space after the title */
+    font-weight: 400; 
+    display: inline;
 }
 
-/* Styling for the authors and details inside the box */
-ol[reversed] li span.names, 
-ol[reversed] li span.details {
-    display: block; /* We want these on their own lines inside the box */
-    margin-top: 8px;
-    font-weight: 400;
-}
-
-/* Make sure the toggle button doesn't look cramped */
-ol[reversed] li img {
-    margin-left: 10px;
-}
-/* Updated styling for toggle images specifically */
-ol[reversed] li span a img {
-    width: 22px; /* This sets the *new* size of the buttons */
-    height: auto; /* This makes sure they don't stretch */
-    vertical-align: middle; /* Keeps them aligned with the text */
+/* Toggle Buttons (dot3 and dot4) sizing */
+ol[reversed] li a img {
+    width: 22px; 
+    height: auto;
+    vertical-align: middle;
     cursor: pointer;
     border: none;
-    margin-left: 12px; /* Small gap between the names and the button */
-    
-    /* Subtle smooth effect when they appear/disappear */
+    margin-left: 10px;
     transition: opacity 0.2s ease;
+    /* Optional: uncomment if your images have white corners you want to hide */
+    /* border-radius: 50%; */
 }
 
-/* Ensure they look good and have some depth */
-ol[reversed] li a img {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    border-radius: 50%; /* Since these are circles, this gives them a clean edge */
-}
-/* Abstract Toggle Styling */
+/* Abstract Box Styling */
 p[id^="paper"] {
     background-color: #f9f9f9;
     padding: 15px;
-    border: 1px solid #eee;
-    border-radius: 4px;
+    border-top: 1px dashed #ddd; /* Dashed line separator inside the box */
     font-size: 0.95rem;
     color: #555;
     margin-top: 15px;
     line-height: 1.5;
+    font-weight: 400;
 }
 
-
-/* Button Image Styling */
+/* Global Image Reset */
 img {
-    vertical-align: middle;
-    cursor: pointer;
-    border: none;
+    max-width: 100%;
 }
 
 /* Mobile Responsive */
