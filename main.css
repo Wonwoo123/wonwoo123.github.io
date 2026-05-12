@@ -186,6 +186,22 @@ p[id^="paper"] {
     border-bottom: 1px solid #f0f0f0;
 }
 
+/* Add space between course groups */
+.course-group {
+    margin-top: 40px; /* Adjust this value to increase/decrease the gap */
+}
+
+/* Ensure the first group in a card stays close to the header */
+.course-group:first-of-type {
+    margin-top: 15px;
+}
+
+/* Ensure headings inside the group don't add their own extra top space */
+.course-group h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
 .semester {
     width: 130px;
     font-weight: 600;
