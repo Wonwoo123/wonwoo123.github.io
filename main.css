@@ -89,6 +89,11 @@ ol[reversed] li {
     font-weight: 700;
 }
 
+/* This ensures the numbers stay outside the white box for a clean look */
+ol[reversed] li::marker {
+    font-weight: 700;
+    color: #444;
+}
 ol[reversed] li:hover {
     border-color: #0066cc;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
