@@ -138,27 +138,24 @@ ol[reversed] li span {
 /* --- Research Page Button Fix (Revised) --- */
 
 /* Target the images to lock their size only */
+/* 1. Remove !important from display so JavaScript can hide the arrows */
 ol[reversed] li a img {
     width: 20px !important;
     height: 20px !important;
-    min-width: 20px !important;
-    max-width: 20px !important;
-    display: inline-block !important;
+    display: inline-block; /* REMOVED !important */
     vertical-align: middle;
-    margin-left: 4px !important; /* This controls the gap you're seeing */
-    margin-right: 0 !important;
+    margin-left: 4px; /* Keeps the dots tight to the names */
     cursor: pointer;
     border: none;
     background: transparent;
 }
 
-/* Maintain the flex alignment for the row */
+/* 2. Change display to inline so it doesn't create a large gap after the text */
 ol[reversed] li a {
-    display: inline-flex;
-    align-items: center;
+    display: inline; /* Changed from inline-flex */
     text-decoration: none;
-    vertical-align: middle;
 }
+
 /* Abstract Box Inside List Items */
 p[id^="paper"] {
     background-color: #f9f9f9;
