@@ -112,6 +112,24 @@ ol[reversed] li span.details {
 ol[reversed] li img {
     margin-left: 10px;
 }
+/* Updated styling for toggle images specifically */
+ol[reversed] li span a img {
+    width: 22px; /* This sets the *new* size of the buttons */
+    height: auto; /* This makes sure they don't stretch */
+    vertical-align: middle; /* Keeps them aligned with the text */
+    cursor: pointer;
+    border: none;
+    margin-left: 12px; /* Small gap between the names and the button */
+    
+    /* Subtle smooth effect when they appear/disappear */
+    transition: opacity 0.2s ease;
+}
+
+/* Ensure they look good and have some depth */
+ol[reversed] li a img {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 50%; /* Since these are circles, this gives them a clean edge */
+}
 /* Abstract Toggle Styling */
 p[id^="paper"] {
     background-color: #f9f9f9;
