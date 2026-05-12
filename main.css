@@ -1,4 +1,3 @@
-/* This part hides the abstract popup by default */
 .more-tab__popup {
     display: none;
     position: absolute;
