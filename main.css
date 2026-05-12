@@ -114,6 +114,7 @@ ol[reversed] li {
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     font-weight: 700;
+    line-height: 1.5;
 }
 
 ol[reversed] li::marker {
@@ -142,8 +143,10 @@ ol[reversed] li a img {
     height: 20px !important;
     min-width: 20px !important;
     max-width: 20px !important;
+    display: inline-block !important;
     vertical-align: middle;
-    margin-left: 10px;
+    margin-left: 4px !important; /* This controls the gap you're seeing */
+    margin-right: 0 !important;
     cursor: pointer;
     border: none;
     background: transparent;
