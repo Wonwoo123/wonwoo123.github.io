@@ -11,7 +11,6 @@
     <h1>Wonwoo Kang</h1>
 
     <div id="wrapper">
-        <!-- Sidebar Navigation -->
         <nav id="nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -20,60 +19,112 @@
             </ul>
         </nav>
 
-        <!-- Main Content -->
         <main id="main">
             <div id="maintext">
-
-                <!-- UIUC Section -->
-                <section class="home-card">
-                    <h3>University of Illinois Urbana-Champaign</h3>
-                    
-                    <p><strong>Awards & Committees</strong></p>
-                    <ul>
-                        <li>2023-2024 TA Teaching Award Committee</li>
-                        <li>2022-2023 Teaching Award Finalist</li>
-                    </ul>
-
-                    <p><strong>Teaching Assistant & Lab Teaching Assistant</strong></p>
-                    <ul>
-                        <li>Fall 2024: Math 257, Linear Algebra with Computational Applications</li>
-                        <li>Spring 2024: Math 257, Linear Algebra with Computational Applications</li>
-                    </ul>
-
-                    <p><strong>Teaching Assistant</strong></p>
-                    <ul>
-                        <li>Spring 2025: Math 285, Intro Differential Equations (Merit)*</li>
-                        <li>Fall 2023: Math 285, Intro Differential Equations (Merit)*</li>
-                        <li>Spring 2023: Math 231, Calculus II (Merit)*</li>
-                        <li>Fall 2022: Math 220, Calculus (Merit)</li>
-                        <li>Spring 2022: Math 241, Calculus III*</li>
-                        <li>Fall 2021: Math 241, Calculus III</li>
-                        <li>Spring 2021: Math 234, Calculus for Business I*</li>
-                        <li>Spring 2020: Math 234, Calculus for Business I*</li>
-                        <li>Fall 2019: Math 115, Preparation for Calculus</li>
-                    </ul>
-                    <p><small><em>* : On the CITL List of Teachers Ranked as Excellent by their Students</em></small></p>
+                
+                <!-- Awards Section -->
+                <section class="home-card award-highlight">
+                    <h3>Teaching Recognition</h3>
+                    <div class="award-item">
+                        <span class="award-year">2023-2024</span>
+                        <span class="award-text">TA Teaching Award Committee</span>
+                    </div>
+                    <div class="award-item">
+                        <span class="award-year">2022-2023</span>
+                        <span class="award-text">Teaching Award Finalist</span>
+                    </div>
                 </section>
 
-                <!-- Merit Explanation -->
-                <section class="home-card" style="background-color: #f0f7ff; border-left: 5px solid #0066cc;">
-                    <h3>What is Merit?</h3>
-                    <p>
-                        Merit-style teaching involves employing a proficient facilitator or instructor to prompt student-student engagement through the presentation of demanding problem sets or similar activities. The facilitator offers guidance as students collaborate in small groups, fostering interaction and discussion of each student's approach within the group.
-                    </p>
+                <!-- UIUC Section -->
+                <section class="home-card university-card uiuc">
+                    <div class="card-header">
+                        <h3>University of Illinois Urbana-Champaign</h3>
+                    </div>
+                    
+                    <div class="course-group">
+                        <h4>Linear Algebra & Computational Apps</h4>
+                        <div class="course-row">
+                            <span class="semester">Fall 2024</span>
+                            <span class="role">TA & Lab TA (Math 257)</span>
+                        </div>
+                        <div class="course-row">
+                            <span class="semester">Spring 2024</span>
+                            <span class="role">TA & Lab TA (Math 257)</span>
+                        </div>
+                    </div>
+
+                    <div class="course-group">
+                        <h4>Calculus & Differential Equations</h4>
+                        <!-- Example with Merit Hover -->
+                        <div class="course-row excellent">
+                            <span class="semester">Spring 2025</span>
+                            <span class="role">Intro Differential Equations (Math 285) 
+                                <span class="merit-tag">
+                                    Merit*
+                                    <span class="merit-popover">
+                                        <strong>What is Merit?</strong><br>
+                                        A collaborative learning style where a facilitator prompts student-student engagement through demanding problem sets, fostering group interaction and discussion.
+                                    </span>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="course-row excellent">
+                            <span class="semester">Fall 2023</span>
+                            <span class="role">Intro Differential Equations (Math 285) <span class="merit-tag">Merit*</span></span>
+                        </div>
+                        <div class="course-row excellent">
+                            <span class="semester">Spring 2023</span>
+                            <span class="role">Calculus II (Math 231) <span class="merit-tag">Merit*</span></span>
+                        </div>
+                        <div class="course-row">
+                            <span class="semester">Fall 2022</span>
+                            <span class="role">Calculus (Math 220) <span class="merit-tag">Merit</span></span>
+                        </div>
+                        <div class="course-row excellent">
+                            <span class="semester">Spring 2022</span>
+                            <span class="role">Calculus III (Math 241)*</span>
+                        </div>
+                        <div class="course-row">
+                            <span class="semester">Fall 2021</span>
+                            <span class="role">Calculus III (Math 241)</span>
+                        </div>
+                        <div class="course-row excellent">
+                            <span class="semester">Spring 2021</span>
+                            <span class="role">Calculus for Business I (Math 234)*</span>
+                        </div>
+                        <div class="course-row excellent">
+                            <span class="semester">Spring 2020</span>
+                            <span class="role">Calculus for Business I (Math 234)*</span>
+                        </div>
+                        <div class="course-row">
+                            <span class="semester">Fall 2019</span>
+                            <span class="role">Preparation for Calculus (Math 115)</span>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- Yonsei Section -->
-                <section class="home-card">
-                    <h3>Yonsei University</h3>
-                    <p><strong>Teaching Assistant</strong></p>
-                    <ul>
-                        <li>Spring 2019: Calculus II</li>
-                        <li>Fall 2018: Calculus II</li>
-                        <li>Spring 2018: Calculus I</li>
-                        <li>Spring 2018: Discrete Mathematics</li>
-                    </ul>
+                <section class="home-card university-card yonsei">
+                    <div class="card-header">
+                        <h3>Yonsei University</h3>
+                    </div>
+                    <div class="course-row">
+                        <span class="semester">Spring 2019</span>
+                        <span class="role">Calculus II</span>
+                    </div>
+                    <div class="course-row">
+                        <span class="semester">Fall 2018</span>
+                        <span class="role">Calculus II</span>
+                    </div>
+                    <div class="course-row">
+                        <span class="semester">Spring 2018</span>
+                        <span class="role">Calculus I / Discrete Mathematics</span>
+                    </div>
                 </section>
+
+                <p style="font-size: 0.85rem; color: #777; margin-top: 20px;">
+                    * Ranked as Excellent by the Center for Innovation in Teaching & Learning (CITL).
+                </p>
 
             </div>
         </main>
