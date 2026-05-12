@@ -1,6 +1,5 @@
 /* Update this at the top of main.css */
 body {
-    /* 'Inter' or 'system-ui' provides that clean, modern look */
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
     color: #333;
@@ -10,15 +9,10 @@ body {
     background-color: #fdfdfd;
 }
 
-h1 {
-    font-size: 1.8rem;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-    color: #444;
+/* Let's make the headers slightly more modern to match */
+h1, h3 {
+    letter-spacing: -0.02em; /* Tighter letter spacing looks great with Sans-Serif */
 }
-
 /* The Layout Wrapper */
 #wrapper {
     display: flex;
