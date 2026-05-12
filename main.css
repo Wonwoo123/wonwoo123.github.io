@@ -70,20 +70,47 @@ h1 {
     padding-bottom: 5px;
 }
 
-/* Paper List Styling */
-ol[reversed] {
-    padding-left: 20px;
-}
 
 ol[reversed] li {
-    margin-bottom: 30px;
-    font-weight: 700; /* Titles are bold */
+    display: block;
+    background-color: #ffffff; /* White background for the box */
+    border: 1px solid #e1e4e8; /* Subtle light gray border */
+    border-radius: 8px;        /* Rounded corners */
+    padding: 20px;             /* Space inside the box */
+    margin-bottom: 20px;       /* Space between boxes */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Very light shadow for depth */
+    transition: transform 0.2s ease; /* Smooth effect if you want to add hover later */
+}
+
+/* Optional: Subtle highlight when you hover over a box */
+ol[reversed] li:hover {
+    border-color: #0066cc;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Ensure the list number is inside or handled */
+ol[reversed] {
+    list-style-position: inside;
+    padding-left: 0;
 }
 
 ol[reversed] li span {
     font-weight: 400; /* Keeps the names from being bold */
     display: inline;  /* THIS FIXES THE LINE BREAK - changed from block to inline */
     margin-left: 5px; /* Adds a tiny bit of space after the title */
+}
+
+/* Styling for the authors and details inside the box */
+ol[reversed] li span.names, 
+ol[reversed] li span.details {
+    display: block; /* We want these on their own lines inside the box */
+    margin-top: 8px;
+    font-weight: 400;
+}
+
+/* Make sure the toggle button doesn't look cramped */
+ol[reversed] li img {
+    margin-left: 10px;
 }
 /* Abstract Toggle Styling */
 p[id^="paper"] {
@@ -96,6 +123,7 @@ p[id^="paper"] {
     margin-top: 15px;
     line-height: 1.5;
 }
+
 
 /* Button Image Styling */
 img {
