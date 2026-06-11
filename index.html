@@ -5,7 +5,28 @@
     <title>Wonwoo Kang - Home</title>    
     <link rel="icon" type="image/png" href="./Images/favicon.png">    
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    
     <link rel="stylesheet" href="main.css">
+
+    <style>
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 25px; /* Adds perfect spacing between the icons */
+            font-size: 1.8em; /* Controls how large the icons are */
+        }
+        .social-icons a {
+            color: #555; /* Neutral grey to match standard academic text */
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .social-icons a:hover {
+            color: #0073e6; /* Turns a nice hyperlink-blue on hover */
+            transform: translateY(-3px); /* Gives the icon a slight interactive "lift" */
+        }
+    </style>
 </head>
 <body>
 
@@ -18,13 +39,12 @@
                 <li><a href="research.html">Research</a></li>
                 <li><a href="teaching.html">Teaching</a></li> 
                 <li><a href="CV.pdf">CV</a></li>
-                </ul>
+            </ul>
         </nav>
 
         <main id="main">
             <div id="maintext">
                 
-                <!-- Standard sections without boxes -->
                 <section class="home-intro">
                     <h3>About Me</h3>
                     <p>
@@ -44,6 +64,13 @@
                         <b>Office:</b> Room 316, Institute of Mathematics and Informatics <br>
                         <b>Mailing Address:</b> Geo Milev, ul. "Akad. Georgi Bonchev" 8, 1113 Sofia, Bulgaria
                     </p>
+
+                    <div class="social-icons">
+                        <a href="mailto:wonk@math.bas.bg" title="Email me"><i class="fas fa-envelope"></i></a>
+                        <a href="https://scholar.google.com/citations?user=E0xMh8AAAAAJ" target="_blank" rel="noopener noreferrer" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+                        <a href="https://www.linkedin.com/in/wonwoo-kang-31270a152/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/Wonwoo123" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
                 </section>
 
             </div>
