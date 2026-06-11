@@ -23,6 +23,15 @@ clean_html = """<!DOCTYPE html>
             HideArrow.style.display = 'none';
         }
     }
+
+    function toggleBibtex(bibtexID) {
+        var CurrentBibtex = document.getElementById(bibtexID);
+        if (CurrentBibtex.style.display == 'none' || CurrentBibtex.style.display == '') {
+            CurrentBibtex.style.display = 'block';
+        } else {
+            CurrentBibtex.style.display = 'none';
+        }
+    }
     </script>
     <script>
     window.MathJax = {
@@ -69,4 +78,4 @@ clean_html = """<!DOCTYPE html>
 
 with open("research.html", "w", encoding="utf-8") as f:
     f.write(clean_html)
-print("Bloat successfully cleared with split publication sections!")
+print("Bloat successfully cleared with BibTeX scripts added!")
