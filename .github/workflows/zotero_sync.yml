@@ -6,7 +6,7 @@ on:
   workflow_dispatch: # Allows you to manually click a button to sync anytime!
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Clears the deprecation warning entirely
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   build:
@@ -23,14 +23,16 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
-      - name: Run Sync Script
+      - name: Reset HTML Template
+        run: python nuke_bloat.py
+
+      - name: Fetch and Inject Zotero Data
         env:
           ZOTERO_USER_ID: ${{ secrets.ZOTERO_USER_ID }}
           ZOTERO_API_KEY: ${{ secrets.ZOTERO_API_KEY }}
           ZOTERO_COLLECTION_ID: ${{ secrets.ZOTERO_COLLECTION_ID }}
-        run: |
-          python nuke_bloat.py
-          python update_publications.py
+        run: python update_publications.py
+
       - name: Commit and Push changes
         run: |
           git config --global user.name "GitHub Actions Bot"
