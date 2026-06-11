@@ -2,6 +2,20 @@ import os
 import re
 import requests
 
+# --- YOUR CO-AUTHOR ROLODEX ---
+# Add your co-authors and their website links here.
+# Make sure to spell their names exactly as they appear in Zotero!
+COAUTHOR_LINKS = {
+    "Esther Banaian": "https://sites.google.com/view/esther-banaian/home",
+    "Elizabeth Kelley": "https://sites.google.com/view/elizabeth-kelley/home",
+    "Ezgi Kantarcı Oğuz":"https://sites.google.com/view/ezgikantarcioguz/main-page",
+    "Emine Yıldırım":"https://emine-yildirim.github.io/",
+    "Heehyun Park": "https://sites.google.com/view/heehyunpark/home",
+    "Inkee Jung" : "https://inkeej.github.io/",
+    # "Another Author": "https://their-website.com",
+}
+# ------------------------------
+
 ZOTERO_USER_ID = os.environ.get("ZOTERO_USER_ID")
 ZOTERO_API_KEY = os.environ.get("ZOTERO_API_KEY")
 ZOTERO_COLLECTION_ID = os.environ.get("ZOTERO_COLLECTION_ID")
@@ -31,10 +45,15 @@ for index, item in enumerate(items):
         if c.get("creatorType") == "author":
             name = f"{c.get('firstName', '')} {c.get('lastName', '')}".strip()
             
-            # --- NEW ADDITION: Skip your own name ---
+            # Skip your own name
             if name.lower() != "wonwoo kang":
-                author_names.append(name)
-            # ----------------------------------------
+                # Check if the co-author is in your Rolodex
+                if name in COAUTHOR_LINKS:
+                    linked_name = f'<a href="{COAUTHOR_LINKS[name]}" target="_blank" rel="noopener noreferrer">{name}</a>'
+                    author_names.append(linked_name)
+                else:
+                    # If not in Rolodex, just print their plain name
+                    author_names.append(name)
     
     authors_str = ""
     if author_names:
@@ -60,7 +79,6 @@ for index, item in enumerate(items):
     item_html += f'                        {title}\n'
     item_html += '                        <span>\n'
     
-    # If you are the only author, it stays completely blank!
     if author_names:
         item_html += f'                        {authors_str}\n'
         
