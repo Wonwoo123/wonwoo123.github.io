@@ -5,6 +5,9 @@ on:
     - cron: '0 0 * * 0' # Runs automatically every Sunday at midnight
   workflow_dispatch: # Allows you to manually click a button to sync anytime!
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true # Clears the deprecation warning entirely
+
 jobs:
   build:
     runs-on: ubuntu-latest
