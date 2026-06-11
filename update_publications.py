@@ -76,13 +76,18 @@ for index, item in enumerate(items):
                     
     html_content += item_html
 
-# 4. Inject back into research.html file cleanly using a split anchor
+# 4. Inject back into research.html file cleanly using a visible div tag
 with open("research.html", "r", encoding="utf-8") as f:
     file_data = f.read()
 
-parts = file_data.split("")
+# Define our highly visible HTML anchor tag
+visible_anchor = '<div id="zotero-sync-anchortag"></div>'
 
-updated_data = parts[0] + "\n" + html_content + "                " + parts[1]
+# Split the webpage layout perfectly in half at our anchor tag
+parts = file_data.split(visible_anchor)
+
+# Rebuild the file: top half + anchor (so it's preserved for next Sunday!) + papers + bottom half
+updated_data = parts[0] + visible_anchor + "\n" + html_content + "                " + parts[1]
 
 with open("research.html", "w", encoding="utf-8") as f:
     f.write(updated_data)
