@@ -11,7 +11,6 @@ headers = {"Zotero-API-Key": ZOTERO_API_KEY}
 response = requests.get(url, headers=headers)
 items = response.json()
 
-# We now have two separate text buckets
 published_html = ""
 preprint_html = ""
 
@@ -31,7 +30,11 @@ for index, item in enumerate(items):
     for c in creators:
         if c.get("creatorType") == "author":
             name = f"{c.get('firstName', '')} {c.get('lastName', '')}".strip()
-            author_names.append(name)
+            
+            # --- NEW ADDITION: Skip your own name ---
+            if name.lower() != "wonwoo kang":
+                author_names.append(name)
+            # ----------------------------------------
     
     authors_str = ""
     if author_names:
@@ -47,19 +50,20 @@ for index, item in enumerate(items):
     pub_title = data.get('publicationTitle', '').strip()
     pub_date = data.get('date', '2026')
 
-    # Sorting Logic: Is this a preprint?
     is_preprint = False
     if item_type == 'preprint' or 'preprint' in pub_title.lower() or 'arxiv' in pub_title.lower() or not pub_title:
         is_preprint = True
 
     display_title = pub_title if pub_title else 'Preprint'
 
-    # Build the HTML block
     item_html = '\n                    <li>\n'
     item_html += f'                        {title}\n'
     item_html += '                        <span>\n'
+    
+    # If you are the only author, it stays completely blank!
     if author_names:
         item_html += f'                        {authors_str}\n'
+        
     item_html += f'                        <a href="javascript:toggleAbstract(\'{paper_id}\')">\n'
     item_html += f'                            <img src="./Images/dot4.png" id="{paper_id}Viewarrow" alt="Down Arrow" style="display: inline;">\n'
     item_html += f'                            <img src="./Images/dot3.png" id="{paper_id}Hidearrow" alt="Up Arrow" style="display: none;">\n'
@@ -79,23 +83,19 @@ for index, item in enumerate(items):
     item_html += '\n                        </span>\n'
     item_html += '                    </li>\n'
     
-    # Drop the paper into the correct bucket
     if is_preprint:
         preprint_html += item_html
     else:
         published_html += item_html
 
-# Inject back into research.html sequentially
 with open("research.html", "r", encoding="utf-8") as f:
     file_data = f.read()
 
-# 1. Update Published Section
 published_anchor = '<div id="zotero-sync-published"></div>'
 parts = file_data.split(published_anchor)
 if len(parts) > 1:
     file_data = parts[0] + published_anchor + "\n" + published_html + "                " + parts[1]
 
-# 2. Update Preprint Section
 preprint_anchor = '<div id="zotero-sync-preprints"></div>'
 parts = file_data.split(preprint_anchor)
 if len(parts) > 1:
