@@ -24,6 +24,13 @@ clean_html = """<!DOCTYPE html>
         }
     }
     </script>
+    <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\\\(', '\\\\)']]
+      }
+    };
+    </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
@@ -56,4 +63,4 @@ clean_html = """<!DOCTYPE html>
 
 with open("research.html", "w", encoding="utf-8") as f:
     f.write(clean_html)
-print("Bloat successfully cleared with the new visible anchor tag!")
+print("Bloat successfully cleared with MathJax inline support!")
