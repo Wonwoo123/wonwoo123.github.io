@@ -6,6 +6,8 @@ import requests
 # Add your co-authors and their website links here.
 # Make sure to spell their names exactly as they appear in Zotero!
 COAUTHOR_LINKS = {
+    "Kyeongjun Lee": "https://sites.google.com/view/kjlee",
+    "Eunsung Lim": "https://sites.google.com/view/eunsung",
     "Esther Banaian": "https://sites.google.com/view/esther-banaian/home",
     "Elizabeth Kelley": "https://sites.google.com/view/elizabeth-kelley/home",
     "Ezgi Kantarcı Oğuz":"https://sites.google.com/view/ezgikantarcioguz/main-page",
@@ -16,11 +18,37 @@ COAUTHOR_LINKS = {
 }
 # ------------------------------
 
+# Helper function to cleanly strip any field from a BibTeX string using brace matching
+def strip_bibtex_field(bibtex_str, field_name):
+    match = re.search(r"^\s*" + field_name + r"\s*=\s*\{", bibtex_str, re.MULTILINE | re.IGNORECASE)
+    if not match:
+        return bibtex_str
+    start = match.start()
+    brace_start = bibtex_str.find('{', start)
+    brace_count = 0
+    end = -1
+    for i in range(brace_start, len(bibtex_str)):
+        if bibtex_str[i] == '{':
+            brace_count += 1
+        elif bibtex_str[i] == '}':
+            brace_count -= 1
+            if brace_count == 0:
+                end = i
+                break
+    if end != -1:
+        if end + 1 < len(bibtex_str) and bibtex_str[end+1] == ',':
+            end += 1
+        if end + 1 < len(bibtex_str) and bibtex_str[end+1] == '\n':
+            end += 1
+        return bibtex_str[:start] + bibtex_str[end+1:]
+    return bibtex_str
+
 ZOTERO_USER_ID = os.environ.get("ZOTERO_USER_ID")
 ZOTERO_API_KEY = os.environ.get("ZOTERO_API_KEY")
 ZOTERO_COLLECTION_ID = os.environ.get("ZOTERO_COLLECTION_ID")
 
-url = f"https://api.zotero.org/users/{ZOTERO_USER_ID}/collections/{ZOTERO_COLLECTION_ID}/items?format=json&direction=desc&sort=date"
+# ADDED 'bibtex' to the include parameter so Zotero sends the formatted citation automatically
+url = f"https://api.zotero.org/users/{ZOTERO_USER_ID}/collections/{ZOTERO_COLLECTION_ID}/items?format=json&direction=desc&sort=date&include=data,bibtex"
 headers = {"Zotero-API-Key": ZOTERO_API_KEY}
 response = requests.get(url, headers=headers)
 items = response.json()
@@ -39,20 +67,21 @@ for index, item in enumerate(items):
     abstract = data.get("abstractNote", "")
     paper_id = f"paper_zotero_{index}"
     
+    # Grab the raw BibTeX and strip out the abstract and file fields
+    raw_bibtex = item.get("bibtex", "")
+    clean_bibtex = strip_bibtex_field(raw_bibtex, "abstract")
+    clean_bibtex = strip_bibtex_field(clean_bibtex, "file") 
+    
     creators = data.get("creators", [])
     author_names = []
     for c in creators:
         if c.get("creatorType") == "author":
             name = f"{c.get('firstName', '')} {c.get('lastName', '')}".strip()
-            
-            # Skip your own name
             if name.lower() != "wonwoo kang":
-                # Check if the co-author is in your Rolodex
                 if name in COAUTHOR_LINKS:
                     linked_name = f'<a href="{COAUTHOR_LINKS[name]}" target="_blank" rel="noopener noreferrer">{name}</a>'
                     author_names.append(linked_name)
                 else:
-                    # If not in Rolodex, just print their plain name
                     author_names.append(name)
     
     authors_str = ""
@@ -86,6 +115,11 @@ for index, item in enumerate(items):
     item_html += f'                            <img src="./Images/dot4.png" id="{paper_id}Viewarrow" alt="Down Arrow" style="display: inline;">\n'
     item_html += f'                            <img src="./Images/dot3.png" id="{paper_id}Hidearrow" alt="Up Arrow" style="display: none;">\n'
     item_html += '                        </a>\n'
+    
+    # NEW: The clean text button that triggers the BibTeX toggle
+    if clean_bibtex:
+        item_html += f'                        <a href="javascript:toggleBibtex(\'bibtex_{paper_id}\')" style="margin-left: 10px; font-size: 0.9em; text-decoration: none; color: #555; border-bottom: 1px dotted #555;">[BibTeX]</a>\n'
+
     item_html += f'                        <br>\n'
     item_html += f'                        {display_title}, {pub_date}.\n'
     item_html += f'                        <br>'
@@ -97,6 +131,12 @@ for index, item in enumerate(items):
         item_html += f'\n                        <p id="{paper_id}" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ddd; font-weight: 400;">\n'
         item_html += f'                            <b>Abstract:</b> {abstract}\n'
         item_html += '                        </p>'
+        
+    # NEW: The cleanly formatted, hidden code block containing your stripped BibTeX
+    if clean_bibtex:
+        item_html += f'\n                        <div id="bibtex_{paper_id}" style="display: none; margin-top: 15px; padding: 15px; background-color: #f4f4f4; border-radius: 5px; overflow-x: auto;">\n'
+        item_html += f'                            <pre style="margin: 0; font-size: 0.85em; color: #333; font-family: monospace;"><code>{clean_bibtex.strip()}</code></pre>\n'
+        item_html += '                        </div>'
                         
     item_html += '\n                        </span>\n'
     item_html += '                    </li>\n'
