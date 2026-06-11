@@ -28,8 +28,9 @@ jobs:
           ZOTERO_USER_ID: ${{ secrets.ZOTERO_USER_ID }}
           ZOTERO_API_KEY: ${{ secrets.ZOTERO_API_KEY }}
           ZOTERO_COLLECTION_ID: ${{ secrets.ZOTERO_COLLECTION_ID }}
-        run: python update_publications.py
-
+        run: |
+          python nuke_bloat.py
+          python update_publications.py
       - name: Commit and Push changes
         run: |
           git config --global user.name "GitHub Actions Bot"
