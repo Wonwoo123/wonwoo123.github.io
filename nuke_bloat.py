@@ -46,7 +46,8 @@ clean_html = """<!DOCTYPE html>
                 Click buttons <img src="./Images/dot4.png" class="toggle-btn" alt="button"> to reveal abstracts.
                 <br><br>
                 <ol reversed="">
-</ol>
+                    <div id="zotero-sync-anchortag"></div>
+                </ol>
             </div>
         </div>
     </div>
@@ -55,4 +56,4 @@ clean_html = """<!DOCTYPE html>
 
 with open("research.html", "w", encoding="utf-8") as f:
     f.write(clean_html)
-print("Bloat successfully cleared!")
+print("Bloat successfully cleared with the new visible anchor tag!")
