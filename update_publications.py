@@ -171,8 +171,8 @@ for index, item in enumerate(items):
     item_html += '                        </a>\n'
     
     if clean_bibtex:
-        item_html += f'                        <a href="javascript:toggleBibtex(\'bibtex_{paper_id}\')" style="margin-left: 10px; font-size: 0.9em; text-decoration: none; color: #555; border-bottom: 1px dotted #555;">[BibTeX]</a>\n'
-
+        item_html += f'                        <a href="javascript:toggleBibtex(\'bibtex_{paper_id}\')" class="bibtex-btn">BibTeX</a>\n'
+    
     if abstract:
         item_html += f'\n                        <p id="{paper_id}" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ddd; font-weight: 400;">\n'
         item_html += f'                            <b>Abstract:</b> {abstract}\n'
