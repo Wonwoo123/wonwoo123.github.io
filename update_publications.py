@@ -17,8 +17,7 @@ COAUTHOR_LINKS = {
     # "Another Author": "https://their-website.com",
 }
 # ------------------------------
-
-# Helper function to cleanly strip any field from a BibTeX string using brace matching
+# Helper function to cleanly strip any field from a BibTeX string
 def strip_bibtex_field(bibtex_str, field_name):
     match = re.search(r"^\s*" + field_name + r"\s*=\s*\{", bibtex_str, re.MULTILINE | re.IGNORECASE)
     if not match:
@@ -47,7 +46,6 @@ ZOTERO_USER_ID = os.environ.get("ZOTERO_USER_ID")
 ZOTERO_API_KEY = os.environ.get("ZOTERO_API_KEY")
 ZOTERO_COLLECTION_ID = os.environ.get("ZOTERO_COLLECTION_ID")
 
-# ADDED 'bibtex' to the include parameter so Zotero sends the formatted citation automatically
 url = f"https://api.zotero.org/users/{ZOTERO_USER_ID}/collections/{ZOTERO_COLLECTION_ID}/items?format=json&direction=desc&sort=date&include=data,bibtex"
 headers = {"Zotero-API-Key": ZOTERO_API_KEY}
 response = requests.get(url, headers=headers)
@@ -67,7 +65,6 @@ for index, item in enumerate(items):
     abstract = data.get("abstractNote", "")
     paper_id = f"paper_zotero_{index}"
     
-    # Grab the raw BibTeX and strip out the abstract and file fields
     raw_bibtex = item.get("bibtex", "")
     clean_bibtex = strip_bibtex_field(raw_bibtex, "abstract")
     clean_bibtex = strip_bibtex_field(clean_bibtex, "file") 
@@ -98,6 +95,17 @@ for index, item in enumerate(items):
     pub_title = data.get('publicationTitle', '').strip()
     pub_date = data.get('date', '2026')
 
+    # --- NEW: Extract DOI or URL to link the Title ---
+    doi = data.get("DOI", "")
+    paper_url = data.get("url", "")
+    
+    title_link = ""
+    if doi:
+        title_link = f"https://doi.org/{doi}"
+    elif paper_url:
+        title_link = paper_url
+    # -------------------------------------------------
+
     is_preprint = False
     if item_type == 'preprint' or 'preprint' in pub_title.lower() or 'arxiv' in pub_title.lower() or not pub_title:
         is_preprint = True
@@ -105,7 +113,14 @@ for index, item in enumerate(items):
     display_title = pub_title if pub_title else 'Preprint'
 
     item_html = '\n                    <li>\n'
-    item_html += f'                        {title}\n'
+    
+    # --- NEW: Apply the link directly to the title if one exists ---
+    if title_link:
+        item_html += f'                        <a href="{title_link}" target="_blank" rel="noopener noreferrer">{title}</a>\n'
+    else:
+        item_html += f'                        {title}\n'
+    # ---------------------------------------------------------------
+    
     item_html += '                        <span>\n'
     
     if author_names:
@@ -116,7 +131,6 @@ for index, item in enumerate(items):
     item_html += f'                            <img src="./Images/dot3.png" id="{paper_id}Hidearrow" alt="Up Arrow" style="display: none;">\n'
     item_html += '                        </a>\n'
     
-    # NEW: The clean text button that triggers the BibTeX toggle
     if clean_bibtex:
         item_html += f'                        <a href="javascript:toggleBibtex(\'bibtex_{paper_id}\')" style="margin-left: 10px; font-size: 0.9em; text-decoration: none; color: #555; border-bottom: 1px dotted #555;">[BibTeX]</a>\n'
 
@@ -132,7 +146,6 @@ for index, item in enumerate(items):
         item_html += f'                            <b>Abstract:</b> {abstract}\n'
         item_html += '                        </p>'
         
-    # NEW: The cleanly formatted, hidden code block containing your stripped BibTeX
     if clean_bibtex:
         item_html += f'\n                        <div id="bibtex_{paper_id}" style="display: none; margin-top: 15px; padding: 15px; background-color: #f4f4f4; border-radius: 5px; overflow-x: auto;">\n'
         item_html += f'                            <pre style="margin: 0; font-size: 0.85em; color: #333; font-family: monospace;"><code>{clean_bibtex.strip()}</code></pre>\n'
