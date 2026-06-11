@@ -49,11 +49,17 @@ clean_html = """<!DOCTYPE html>
 
         <div id="main" class="papers">
             <div id="maintext">
-                <h3>Publication: </h3> 
                 Click buttons <img src="./Images/dot4.png" class="toggle-btn" alt="button"> to reveal abstracts.
                 <br><br>
+
+                <h3>Published Papers</h3> 
                 <ol reversed="">
-                    <div id="zotero-sync-anchortag"></div>
+                    <div id="zotero-sync-published"></div>
+                </ol>
+
+                <h3 style="margin-top: 40px;">Preprints</h3> 
+                <ol reversed="">
+                    <div id="zotero-sync-preprints"></div>
                 </ol>
             </div>
         </div>
@@ -63,4 +69,4 @@ clean_html = """<!DOCTYPE html>
 
 with open("research.html", "w", encoding="utf-8") as f:
     f.write(clean_html)
-print("Bloat successfully cleared with MathJax inline support!")
+print("Bloat successfully cleared with split publication sections!")
