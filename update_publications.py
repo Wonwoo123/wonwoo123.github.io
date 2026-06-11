@@ -63,6 +63,14 @@ for index, item in enumerate(items):
 
     title = data.get("title", "")
     abstract = data.get("abstractNote", "")
+    
+    # --- NEW: Convert LaTeX text formatting to Web HTML ---
+    if abstract:
+        abstract = re.sub(r'\\emph\{([^}]+)\}', r'<em>\1</em>', abstract)
+        abstract = re.sub(r'\\textit\{([^}]+)\}', r'<em>\1</em>', abstract)
+        abstract = re.sub(r'\\textbf\{([^}]+)\}', r'<strong>\1</strong>', abstract)
+    # ------------------------------------------------------
+
     paper_id = f"paper_zotero_{index}"
     
     raw_bibtex = item.get("bibtex", "")
@@ -95,7 +103,6 @@ for index, item in enumerate(items):
     pub_title = data.get('publicationTitle', '').strip()
     pub_date = data.get('date', '2026')
 
-    # --- NEW: Extract DOI or URL to link the Title ---
     doi = data.get("DOI", "")
     paper_url = data.get("url", "")
     
@@ -104,7 +111,6 @@ for index, item in enumerate(items):
         title_link = f"https://doi.org/{doi}"
     elif paper_url:
         title_link = paper_url
-    # -------------------------------------------------
 
     is_preprint = False
     if item_type == 'preprint' or 'preprint' in pub_title.lower() or 'arxiv' in pub_title.lower() or not pub_title:
@@ -112,20 +118,25 @@ for index, item in enumerate(items):
 
     display_title = pub_title if pub_title else 'Preprint'
 
-    item_html = '\n                    <li>\n'
+    item_html = '\n                    <li style="margin-bottom: 15px;">\n'
     
-    # --- NEW: Apply the link directly to the title if one exists ---
     if title_link:
-        item_html += f'                        <a href="{title_link}" target="_blank" rel="noopener noreferrer">{title}</a>\n'
+        item_html += f'                        <a href="{title_link}" target="_blank" rel="noopener noreferrer">{title}</a><br>\n'
     else:
-        item_html += f'                        {title}\n'
-    # ---------------------------------------------------------------
+        item_html += f'                        {title}<br>\n'
     
     item_html += '                        <span>\n'
     
     if author_names:
-        item_html += f'                        {authors_str}\n'
+        item_html += f'                        {authors_str}<br>\n'
         
+    item_html += f'                        {display_title}, {pub_date}.\n'
+    
+    if arxiv_num:
+        item_html += f'                        <br>\n'
+        item_html += f'                        arXiv: <a href="https://arxiv.org/abs/{arxiv_num}" target="_blank" rel="noopener noreferrer">{arxiv_num}</a>\n'
+        
+    item_html += f'                        <br>\n'
     item_html += f'                        <a href="javascript:toggleAbstract(\'{paper_id}\')">\n'
     item_html += f'                            <img src="./Images/dot4.png" id="{paper_id}Viewarrow" alt="Down Arrow" style="display: inline;">\n'
     item_html += f'                            <img src="./Images/dot3.png" id="{paper_id}Hidearrow" alt="Up Arrow" style="display: none;">\n'
@@ -134,13 +145,6 @@ for index, item in enumerate(items):
     if clean_bibtex:
         item_html += f'                        <a href="javascript:toggleBibtex(\'bibtex_{paper_id}\')" style="margin-left: 10px; font-size: 0.9em; text-decoration: none; color: #555; border-bottom: 1px dotted #555;">[BibTeX]</a>\n'
 
-    item_html += f'                        <br>\n'
-    item_html += f'                        {display_title}, {pub_date}.\n'
-    item_html += f'                        <br>'
-    
-    if arxiv_num:
-        item_html += f'\n                        arXiv: <a href="https://arxiv.org/abs/{arxiv_num}" target="_blank" rel="noopener noreferrer">{arxiv_num}</a>'
-        
     if abstract:
         item_html += f'\n                        <p id="{paper_id}" style="display: none; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ddd; font-weight: 400;">\n'
         item_html += f'                            <b>Abstract:</b> {abstract}\n'
