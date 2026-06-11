@@ -72,15 +72,17 @@ for index, item in enumerate(items):
                         </span>
                     </li>\n"""
 
-# 4. Inject back into research.html file
+# 4. Inject back into research.html file cleanly
 with open("research.html", "r", encoding="utf-8") as f:
     file_data = f.read()
 
+# This specific regex explicitly captures everything between the two tags and swaps it out flawlessly
 pattern = re.compile(
-    r"().*?()", 
+    r".*?", 
     re.DOTALL
 )
-updated_data = pattern.sub(f"\\1\n{html_content}                \\2", file_data)
+replacement_text = f"\n{html_content}                "
+updated_data = pattern.sub(replacement_text, file_data)
 
 with open("research.html", "w", encoding="utf-8") as f:
     f.write(updated_data)
