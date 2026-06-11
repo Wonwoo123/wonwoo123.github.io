@@ -16,7 +16,7 @@ COAUTHOR_LINKS = {
     "Inkee Jung" : "https://inkeej.github.io/",
     # "Another Author": "https://their-website.com",
 }
-# ------------------------------
+
 # Helper function to cleanly strip any field from a BibTeX string
 def strip_bibtex_field(bibtex_str, field_name):
     match = re.search(r"^\s*" + field_name + r"\s*=\s*\{", bibtex_str, re.MULTILINE | re.IGNORECASE)
@@ -64,18 +64,19 @@ for index, item in enumerate(items):
     title = data.get("title", "")
     abstract = data.get("abstractNote", "")
     
-    # --- NEW: Convert LaTeX text formatting to Web HTML ---
     if abstract:
         abstract = re.sub(r'\\emph\{([^}]+)\}', r'<em>\1</em>', abstract)
         abstract = re.sub(r'\\textit\{([^}]+)\}', r'<em>\1</em>', abstract)
         abstract = re.sub(r'\\textbf\{([^}]+)\}', r'<strong>\1</strong>', abstract)
-    # ------------------------------------------------------
 
     paper_id = f"paper_zotero_{index}"
     
     raw_bibtex = item.get("bibtex", "")
     clean_bibtex = strip_bibtex_field(raw_bibtex, "abstract")
     clean_bibtex = strip_bibtex_field(clean_bibtex, "file") 
+    clean_bibtex = strip_bibtex_field(clean_bibtex, "copyright") 
+    clean_bibtex = strip_bibtex_field(clean_bibtex, "note") 
+    clean_bibtex = strip_bibtex_field(clean_bibtex, "keywords") 
     
     creators = data.get("creators", [])
     author_names = []
@@ -116,7 +117,33 @@ for index, item in enumerate(items):
     if item_type == 'preprint' or 'preprint' in pub_title.lower() or 'arxiv' in pub_title.lower() or not pub_title:
         is_preprint = True
 
-    display_title = pub_title if pub_title else 'Preprint'
+    # --- NEW: PROPER CITATION BUILDER ---
+    # Extract just the 4-digit year from the date (e.g., "07/2026" -> "2026")
+    year_match = re.search(r'\b(19|20)\d{2}\b', pub_date)
+    year = year_match.group(0) if year_match else pub_date
+
+    if is_preprint:
+        journal_info = f"Preprint, {year}."
+    else:
+        volume = data.get('volume', '')
+        issue = data.get('issue', '')
+        pages = data.get('pages', '')
+        
+        journal_info = pub_title if pub_title else "Published"
+        
+        # Add Volume and Issue (e.g., ", 136(2)")
+        if volume:
+            journal_info += f", {volume}"
+            if issue:
+                journal_info += f"({issue})"
+                
+        # Add Pages (e.g., ", 104392")
+        if pages:
+            journal_info += f", {pages}"
+            
+        # Add Year (e.g., " (2026).")
+        journal_info += f" ({year})."
+    # ------------------------------------
 
     item_html = '\n                    <li style="margin-bottom: 15px;">\n'
     
@@ -130,7 +157,8 @@ for index, item in enumerate(items):
     if author_names:
         item_html += f'                        {authors_str}<br>\n'
         
-    item_html += f'                        {display_title}, {pub_date}.\n'
+    # Inject our beautifully formatted citation
+    item_html += f'                        {journal_info}\n'
     
     if arxiv_num:
         item_html += f'                        <br>\n'
