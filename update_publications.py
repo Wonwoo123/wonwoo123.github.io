@@ -91,11 +91,15 @@ for index, item in enumerate(items):
                     author_names.append(name)
     
     authors_str = ""
-    if author_names:
-        if len(author_names) == 1:
-            authors_str = f"(with {author_names[0]})"
-        else:
-            authors_str = f"(with {', '.join(author_names[:-1])}, and {author_names[-1]})"
+        if author_names:
+            if len(author_names) == 1:
+                authors_str = f"(with {author_names[0]})"
+            elif len(author_names) == 2:
+                # Exactly two authors: "A and B" (no comma)
+                authors_str = f"(with {author_names[0]} and {author_names[1]})"
+            else:
+                # Three or more authors: "A, B, and C" (with comma)
+                authors_str = f"(with {', '.join(author_names[:-1])}, and {author_names[-1]})"
 
     extra_field = data.get("extra", "")
     arxiv_match = re.search(r"arXiv:\s*([\d\.]+)", extra_field, re.IGNORECASE)
